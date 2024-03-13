@@ -5,7 +5,7 @@ import textwrap
 import numpy as np
 from io import StringIO
 import codecs
-st.title("Interview Assistant")
+st.title("File Analysis Assistant")
 
 with st.sidebar: 
     with st.form(key="my_form"):
@@ -86,7 +86,8 @@ if query and files is not None:
 
     query_response = lhtxt.get_response_from_query_about_textfiles(file_dbs=[text_vector_one,text_vector_two], user_query=query)
     if query_response:
-        st.subheader("QUERY RESPONSE:")
+        st.subheader("QUERY:")
         st.text(textwrap.fill(query, width = 80))
+        st.subheader("RESPONSE:")
         st.text(textwrap.fill(query_response))
 
