@@ -5,10 +5,10 @@ from langchain.embeddings.openai import OpenAIEmbeddings
 from langchain.prompts import PromptTemplate
 from langchain.chains import LLMChain
 from langchain.vectorstores import FAISS # Library from META for efficient similarity search
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
 import openai
 
-load_dotenv()
+# load_env()
 
 embeddings = OpenAIEmbeddings()
 
@@ -22,6 +22,10 @@ gpt_template = """
     If you dont feel like you have enough information to answer, say "I don't know."
     Your answers should be detailed. any lists you generate should be formatted with new line characters.
 """
+
+def create_similarity_embedding_db_from_text(text):
+    # CREATE EMBEDDINGS TO TEST SIMILARITY SCORES
+    return openai.embeddings.create(input = [text], model="text-embedding-ada-002").data[0].embedding
 
 
 
