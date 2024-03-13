@@ -69,12 +69,21 @@ if query and files is not None:
     decoded_string_two = codecs.decode(bytes_data, 'utf-8')
 
 
-    # create vector
+    # create vector for text searching 
     text_vector_one = lhtxt.create_vector_db_from_text(decoded_string_one)
     text_vector_two = lhtxt.create_vector_db_from_text(decoded_string_two)
-        
 
-    st.subheader("TEXT QUERY:")
+
+    # create embedding for similarity scores
+    embedding1 = lh.create_similarity_embedding_db_from_text(decoded_string_one)
+    embedding2 = lh.create_similarity_embedding_db_from_text(decoded_string_two)
+    similarity_score = np.dot(embedding1, embedding2)
+    similarity_response = str(similarity_score)
+    # just return similary scoure
+    if similarity_response:
+        st.subheader("TEXT SIMILARITY SCORE:")
+        st.text(textwrap.fill(similarity_response, width = 80))
+
     query_response = lhtxt.get_response_from_query_about_textfiles(file_dbs=[text_vector_one,text_vector_two], user_query=query)
     if query_response:
         st.subheader("QUERY RESPONSE:")

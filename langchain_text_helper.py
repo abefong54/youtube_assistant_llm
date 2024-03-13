@@ -27,8 +27,6 @@ gpt_template = """
 
 def create_vector_db_from_text(text: str) -> FAISS:
     # FAISS HELPS US DO THE SIMILARITY SEARCH
-    # text_splitter = RecursiveCharacterTextSplitter(chunk_size=1000, chunk_overlap=100)
-    # docs = text_splitter.split_documents(text)
     db = FAISS.from_texts([text], embeddings)
     return db
 
@@ -38,7 +36,6 @@ def get_response_from_query_about_textfiles(file_dbs, user_query, k_similarity=4
     # search the query relevant documents
     # what did they say about X in the video
     # the search will search only the document that is relevant to our query
-
     files_texts = []
     for file_db in file_dbs:    
         file_text = file_db.similarity_search(user_query, k_similarity)
