@@ -2,4 +2,8 @@ youtube-transcript-api
 tiktoken
 faiss-cpu
 numpy
-# codecs
+langchain
+textwrap
+streamlit
+openai
+dotenv
