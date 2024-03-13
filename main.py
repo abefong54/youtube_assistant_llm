@@ -59,7 +59,7 @@ with st.sidebar:
 
 
 
-if query and files is not None:
+if query and len(files) > 0:
     # read files in and create embeddings
     # for uploaded_file in files:
     # To read file into string

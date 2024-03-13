@@ -3,7 +3,6 @@ tiktoken
 faiss-cpu
 numpy
 langchain
-textwrap
 streamlit
 openai
 dotenv
